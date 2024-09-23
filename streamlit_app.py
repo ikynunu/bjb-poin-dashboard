@@ -299,11 +299,11 @@ with tab3:
     col1, col2 = st.columns(2)
     with col1:
         st.subheader("Total Points Earned")
-        st.metric("{:,.0f}".format(df_july['Point Earned'].sum()))
+        st.metric("Points", "{:,.0f}".format(df_july['Point Earned'].sum()))
     
     with col2:
         st.subheader("Total Points Redeemed")
-        st.metric("{:,.0f}".format(df_july['Point Redeemed'].sum()))
+        st.metric("Points", "{:,.0f}".format(df_july['Point Redeemed'].sum()))
 
     # Insights
     st.subheader("Insights in July 2024")
