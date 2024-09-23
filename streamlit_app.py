@@ -8,7 +8,7 @@ st.title("BJB Loyalty Points Dashboard")
 
 @st.cache_resource
 def load_data():
-    data = pd.read_csv("/workspaces/bjb-poin-dashboard/loyalty_points_log_8.csv")
+    data = pd.read_csv("loyalty_points_log_8.csv")
     return data
 
 data = load_data()
