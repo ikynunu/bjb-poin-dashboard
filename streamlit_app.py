@@ -325,7 +325,7 @@ with tab3:
     st.write(insights)
 
     # Recommendations for Voucher Redemption
-    st.write("Based on the data from the previous month, here are the recommended vouchers:")
+    st.subheader("Based on the data from the previous month, here are the recommended vouchers:")
     recommendations = """
     1. **Popular Retail Vouchers**:
         - Given that **Pay & Buy** is the most used service, consider offering retail or grocery vouchers for popular stores like Alfamart, Indomaret, or supermarkets. These vouchers would likely appeal to customers who frequently use this service for daily purchases.
