@@ -27,6 +27,21 @@ with tab1:
     current_date = data['Date'].iloc[0]
     st.write(f"Date: {current_date}")
 
+    # Download buttons at the right
+    st.write("")  # Adding an empty line for spacing
+    col_download = st.columns([3, 1])  # Creates 8:1 ratio columns to push the button to the right
+
+    # Create CSV data for download
+    csv_data = data.to_csv(index=False).encode('utf-8')
+    
+    with col_download[1]:  # Place the button in the right column
+        st.download_button(
+            label="Download CSV",
+            data=csv_data,
+            file_name=f'bjb_daily_monitoring_{current_date}.csv',
+            mime='text/csv'
+        )
+
     # Accessing the values directly since the data is already filtered for August 8, 2024
     total_points_earned = data['Total Points Earn'].iloc[0]
     total_points_redeemed = data['Total Points Redeemed'].iloc[0]
@@ -119,6 +134,8 @@ with tab2:
         "2024-08-07": 'loyalty_points_log_7.csv'
     }
 
+    selected_date_str = selected_date.strftime('%Y-%m-%d')
+
     # Load data based on selected date
     selected_date_str = selected_date.strftime('%Y-%m-%d')
     if selected_date_str in file_map:
@@ -129,6 +146,17 @@ with tab2:
     # Pastikan data tersedia sebelum menampilkan
     if historical_data is not None:
         st.write(f"Selected date: {selected_date.strftime('%B %d, %Y')}")
+         # Download buttons at the right for historical monitoring
+        csv_data_hist = historical_data.to_csv(index=False).encode('utf-8')
+        col_download_hist = st.columns([3, 1])  # Creates 8:1 ratio columns to push the button to the right
+    
+        with col_download_hist[1]:
+            st.download_button(
+                label="Download CSV",
+                data=csv_data_hist,
+                file_name=f'bjb_historical_monitoring_{selected_date_str}.csv',
+                mime='text/csv'
+            )
 
         # Menghitung metrik yang sama seperti di Tab 1
         total_points_earned = historical_data['Total Points Earn'].iloc[0]
@@ -183,7 +211,7 @@ with tab2:
             st.plotly_chart(fig_hist)
         else:
             st.warning("No classification data available for pie chart visualization.")
-
+        
         # Insight Harian berdasarkan tanggal yang dipilih
         insights_map = {
             "2024-08-01": """
@@ -248,5 +276,65 @@ with tab2:
 
 # Tab 3: Voucher Recommendations
 with tab3:
-    st.header("Voucher Recommendations for Next Month")
+    st.header("Voucher Recommendations for August 2024")
+
+    # Display the data table
+    st.subheader("Point Sources and Transactions in July 2024")
+    data = {
+        "Sumber Poin": ["Transfer BI-Fast", "Transfer Non BI-Fast", "QRIS", "E-Wallet", "Pay & Buy"],
+        "Total": [60, 61, 114, 114, 211],
+        "Point Earned": [5480422, 0, 0, 0, 0],
+        "Point Redeemed": [950254, 0, 0, 0, 0],
+    }
+    df_july = pd.DataFrame(data)
+    
+    # Pie chart for point sources
+    fig_pie = px.pie(df_july, names='Sumber Poin', values='Total',
+                     title='Distribution of Point Sources in July 2024',
+                     labels={'Sumber Poin': 'Point Source', 'Total': 'Total Transactions'},
+                     hole=0.3)  # Optional donut chart
+    st.plotly_chart(fig_pie)
+
+    # Display points earned and redeemed in two columns
+    col1, col2 = st.columns(2)
+    with col1:
+        st.subheader("Total Points Earned")
+        st.metric("{:,.0f}".format(df_july['Point Earned'].sum()))
+    
+    with col2:
+        st.subheader("Total Points Redeemed")
+        st.metric("{:,.0f}".format(df_july['Point Redeemed'].sum()))
+
+    # Insights
+    st.subheader("Insights in July 2024")
+    insights = """
+    1. **Dominant Point Sources**:
+        - **Pay & Buy** transactions significantly dominated the point earning, contributing to a total of **211 transactions**. This indicates a strong customer engagement in using payment services for purchases, likely reflecting consumer preferences for convenience and rewards from everyday spending.
+        - **QRIS** and **E-Wallet** transactions both had **114 transactions**, showing a balanced interest in digital payment solutions.
+
+    2. **Transfer Activities**:
+        - **Transfer BI-Fast** had **60 transactions** with a total of **5,480,422 points earned**, indicating that this method is valued by customers for quick and efficient fund transfers. However, it’s worth noting that the redeemed points from this source are notably lower than earned points.
+        - **Transfer Non BI-Fast** had **61 transactions**, but the data does not show any points earned or redeemed, suggesting a need for further promotion or incentives for this transfer method.
+    """
+    st.write(insights)
+
+    # Recommendations for Voucher Redemption
     st.write("Based on the data from the previous month, here are the recommended vouchers for next month:")
+    st.subheader("Voucher Recommendations for August 2024")
+    recommendations = """
+    1. **Focus on Everyday Spending**:
+        - **Voucher Ideas**: Offer vouchers for popular retail partners (e.g., grocery stores, online shopping platforms) where customers can easily redeem points. This can encourage further spending and loyalty to the bank.
+
+    2. **Incentives for Digital Payments**:
+        - **QRIS and E-Wallet Promotions**: Create vouchers or cashback offers specifically for QRIS and E-Wallet transactions. Highlight these in marketing materials to increase engagement with these payment methods.
+
+    3. **Transfer Promotions**:
+        - Consider introducing promotions for **Transfer Non BI-Fast** to stimulate point earning and redemption. For example, offering bonus points for every transfer made could motivate customers to use this service more frequently.
+
+    4. **Seasonal or Event-Based Vouchers**:
+        - Align vouchers with upcoming holidays or local events in August to encourage point redemption. This could include vouchers for entertainment, dining, or travel, appealing to customers looking to enjoy their points during special occasions.
+
+    5. **Feedback and Surveys**:
+        - Engage customers through surveys to determine what types of vouchers they would be most interested in. Tailoring offerings based on customer feedback can enhance satisfaction and loyalty.
+    """
+    st.write(recommendations)
