@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import plotly.express as px
 
-st.title("BJB Loyalty Points Dashboard")
+st.title("bjb Loyalty Points Dashboard")
 
 @st.cache_resource
 def load_data():
@@ -23,7 +23,7 @@ tab1, tab2, tab3 = st.tabs(["Daily Monitoring", "Historical Monitoring", "Vouche
 
 # Tab 1: Daily Monitoring
 with tab1:
-    st.header("BJB Points Monitoring")
+    st.header("bjb Points Monitoring")
     current_date = data['Date'].iloc[0]
     st.write(f"Date: {current_date}")
 
@@ -118,7 +118,7 @@ with tab1:
 
 # Historical Monitoring
 with tab2:
-    st.header("BJB Points Monitoring")
+    st.header("bjb Points Monitoring")
 
     # Kalender untuk pemilihan tanggal
     selected_date = st.date_input("Select Date", value=pd.to_datetime('2024-08-01'))
@@ -319,8 +319,7 @@ with tab3:
     st.write(insights)
 
     # Recommendations for Voucher Redemption
-    st.write("Based on the data from the previous month, here are the recommended vouchers for next month:")
-    st.subheader("Voucher Recommendations for August 2024")
+    st.write("Based on the data from the previous month, here are the recommended vouchers:")
     recommendations = """
     1. **Focus on Everyday Spending**:
         - **Voucher Ideas**: Offer vouchers for popular retail partners (e.g., grocery stores, online shopping platforms) where customers can easily redeem points. This can encourage further spending and loyalty to the bank.
