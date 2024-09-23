@@ -49,14 +49,14 @@ with tab1:
     # First voucher - displayed in the left column
     col4, col5 = st.columns(2)
     with col4:
-        st.image("/workspaces/bjb-poin-dashboard/1.png", use_column_width=True)  # Manually specify the image path for voucher 1
+        st.image("1.png", use_column_width=True)  # Manually specify the image path for voucher 1
         st.write("**Food & Beverages**")  # Manually specify the name for voucher 1
         st.metric("Redeemed Vouchers", "{:,.0f}".format(total_vouchers_redeemed))  # Metrics for voucher 1
         st.metric("Vouchers Not Yet Redeemed", "{:,.0f}".format(total_vouchers_not_redeemed))
 
     # Second voucher - displayed in the right column
     with col5:
-        st.image("/workspaces/bjb-poin-dashboard/2.png", use_column_width=True)  # Manually specify the image path for voucher 2
+        st.image("2.png", use_column_width=True)  # Manually specify the image path for voucher 2
         st.write("**Electricity**")  # Manually specify the name for voucher 2
         st.metric("Redeemed Vouchers", "{:,.0f}".format(total_vouchers_redeemed))  # Metrics for voucher 2
         st.metric("Vouchers Not Yet Redeemed", "{:,.0f}".format(total_vouchers_not_redeemed))
@@ -64,14 +64,14 @@ with tab1:
     # Third voucher - create a new row with 2 columns
     col6, col7 = st.columns(2)
     with col6:
-        st.image("/workspaces/bjb-poin-dashboard/3.png", use_column_width=True)  # Manually specify the image path for voucher 3
+        st.image("3.png", use_column_width=True)  # Manually specify the image path for voucher 3
         st.write("**Convenience Store**")  # Manually specify the name for voucher 3
         st.metric("Redeemed Vouchers", "{:,.0f}".format(total_vouchers_redeemed))  # Metrics for voucher 3
         st.metric("Vouchers Not Yet Redeemed", "{:,.0f}".format(total_vouchers_not_redeemed))
 
     # Fourth voucher - in the right column
     with col7:
-        st.image("/workspaces/bjb-poin-dashboard/Rp50000.png", use_column_width=True)  # Manually specify the image path for voucher 4
+        st.image("Rp50000.png", use_column_width=True)  # Manually specify the image path for voucher 4
         st.write("**Entertainment**")  # Manually specify the name for voucher 4
         st.metric("Redeemed Vouchers", "{:,.0f}".format(total_vouchers_redeemed))  # Metrics for voucher 4
         st.metric("Vouchers Not Yet Redeemed", "{:,.0f}".format(total_vouchers_not_redeemed))
@@ -113,13 +113,13 @@ with tab2:
     def load_data_by_date(selected_date):
         # Pemetaan file CSV untuk tanggal 1-7 Agustus 2024
         file_map = {
-            "2024-08-01": '/workspaces/bjb-poin-dashboard/loyalty_points_log_1.csv',
-            "2024-08-02": '/workspaces/bjb-poin-dashboard/loyalty_points_log_2.csv',
-            "2024-08-03": '/workspaces/bjb-poin-dashboard/loyalty_points_log_3.csv',
-            "2024-08-04": '/workspaces/bjb-poin-dashboard/loyalty_points_log_4.csv',
-            "2024-08-05": '/workspaces/bjb-poin-dashboard/loyalty_points_log_5.csv',
-            "2024-08-06": '/workspaces/bjb-poin-dashboard/loyalty_points_log_6.csv',
-            "2024-08-07": '/workspaces/bjb-poin-dashboard/loyalty_points_log_7.csv'
+            "2024-08-01": 'loyalty_points_log_1.csv',
+            "2024-08-02": 'loyalty_points_log_2.csv',
+            "2024-08-03": 'loyalty_points_log_3.csv',
+            "2024-08-04": 'loyalty_points_log_4.csv',
+            "2024-08-05": 'loyalty_points_log_5.csv',
+            "2024-08-06": 'loyalty_points_log_6.csv',
+            "2024-08-07": 'loyalty_points_log_7.csv'
         }
         
         # Formatkan tanggal yang dipilih
@@ -164,14 +164,14 @@ with tab2:
         # First voucher - displayed in the left column
         col4, col5 = st.columns(2)
         with col4:
-            st.image("/workspaces/bjb-poin-dashboard/1.png", use_column_width=True)  # Manually specify the image path for voucher 1
+            st.image("1.png", use_column_width=True)  # Manually specify the image path for voucher 1
             st.write("**Food & Beverages**")  # Manually specify the name for voucher 1
             st.metric("Redeemed Vouchers", "{:,.0f}".format(total_vouchers_redeemed))  # Metrics for voucher 1
             st.metric("Vouchers Not Yet Redeemed", "{:,.0f}".format(total_vouchers_not_redeemed))
 
         # Second voucher - displayed in the right column
         with col5:
-            st.image("/workspaces/bjb-poin-dashboard/2.png", use_column_width=True)  # Manually specify the image path for voucher 2
+            st.image("2.png", use_column_width=True)  # Manually specify the image path for voucher 2
             st.write("**Electricity**")  # Manually specify the name for voucher 2
             st.metric("Redeemed Vouchers", "{:,.0f}".format(total_vouchers_redeemed))  # Metrics for voucher 2
             st.metric("Vouchers Not Yet Redeemed", "{:,.0f}".format(total_vouchers_not_redeemed))
@@ -179,14 +179,14 @@ with tab2:
         # Third voucher - create a new row with 2 columns
         col6, col7 = st.columns(2)
         with col6:
-            st.image("/workspaces/bjb-poin-dashboard/3.png", use_column_width=True)  # Manually specify the image path for voucher 3
+            st.image("3.png", use_column_width=True)  # Manually specify the image path for voucher 3
             st.write("**Convenience Store**")  # Manually specify the name for voucher 3
             st.metric("Redeemed Vouchers", "{:,.0f}".format(total_vouchers_redeemed))  # Metrics for voucher 3
             st.metric("Vouchers Not Yet Redeemed", "{:,.0f}".format(total_vouchers_not_redeemed))
 
         # Fourth voucher - in the right column
         with col7:
-            st.image("/workspaces/bjb-poin-dashboard/Rp50000.png", use_column_width=True)  # Manually specify the image path for voucher 4
+            st.image("Rp50000.png", use_column_width=True)  # Manually specify the image path for voucher 4
             st.write("**Entertainment**")  # Manually specify the name for voucher 4
             st.metric("Redeemed Vouchers", "{:,.0f}".format(total_vouchers_redeemed))  # Metrics for voucher 4
             st.metric("Vouchers Not Yet Redeemed", "{:,.0f}".format(total_vouchers_not_redeemed))
