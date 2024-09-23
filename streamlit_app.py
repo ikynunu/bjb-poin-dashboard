@@ -215,53 +215,53 @@ with tab2:
         # Insight Harian berdasarkan tanggal yang dipilih
         insights_map = {
             "2024-08-01": """
-            - **Buy & Pay** dominates with 38.16% (58 transactions), showing that customers more often use payment services such as credit, bills, or shopping at the beginning of the month.
-            - **E-Wallet** came in second with 22.37% (34 transactions), showing the popularity of e-wallet top-up services such as GoPay, OVO, and DANA.
-            - **QRIS** accounted for 15.13% (23 transactions), indicating that QR digital payments are increasingly being used.
-            - Non BI-Fast transfers were slightly higher than BI-Fast, with 12.50% (19 transactions) and 11.84% (18 transactions) respectively.
-            - At the beginning of the month, most transactions came from payments (Buy & Pay) and e-wallets, while bank transfers still had an important role but did not dominate.
+            - **Buy & Pay** dominates with 38.16%, showing that customers more often use payment services such as credit, bills, or shopping at the beginning of the month.
+            - **E-Wallet** came in second with 22.37%, showing the popularity of e-wallet top-up services such as GoPay, OVO, and DANA.
+            - **QRIS** accounted for 15.13%, indicating that QR digital payments are increasingly being used.
+            - **Non BI-Fast** transfers were slightly higher than **BI-Fast**, with 12.50% and 11.84% respectively.
+            - At the beginning of the month, most transactions came from **payments (Buy & Pay)** and **e-wallets**, while **bank transfers** still had an important role but did not dominate.
             """,
             "2024-08-02": """
-            - **Buy & Pay** increased to 40.49% (66 transactions), confirming that payments are still a priority for customers.
-            - **E-Wallets** also rose to 24.54% (40 transactions), showing that e-wallet top-ups continue to be used consistently.
-            - **QRIS** remained stable at 14.11% (23 transactions).
-            - Non BI-Fast transfers rose to 13.50% (22 transactions), more than BI-Fast which dropped to 7.36% (12 transactions).
-            - On the second day, e-wallet payments and top-ups dominated, with Buy & Pay becoming increasingly significant. BI-Fast transfers slightly decreased compared to the first day.
+            - **Buy & Pay** increased to 40.49%, confirming that payments are still a priority for customers.
+            - **E-Wallets** also rose to 24.54%, showing that e-wallet top-ups continue to be used consistently.
+            - **QRIS** remained stable at 14.11%.
+            - **Non BI-Fast** transfers rose to 13.50%, more than **BI-Fast** which dropped to 7.36%.
+            - On the second day, **e-wallet payments** and **top-ups** dominated, with **Buy & Pay** becoming increasingly significant. **BI-Fast** transfers slightly decreased compared to the first day.
             """,
             "2024-08-03": """
-            - **Buy & Pay** remained high with 39.74% (62 transactions), despite a slight drop from the previous day.
-            - **E-Wallets** dropped to 19.23% (30 transactions), although it remains in an important position.
-            - **QRIS** increased to 18.59% (29 transactions), indicating more active usage.
-            - Non BI-Fast transfers at 14.74% (23 transactions), while BI-Fast stabilized at 7.69% (12 transactions).
-            - Payment transactions (Buy & Pay) remain dominant, but QRIS shows a significant increase, which may be due to promotions or incentives to use digital payments.
+            - **Buy & Pay** remained high with 39.74%, despite a slight drop from the previous day.
+            - **E-Wallets** dropped to 19.23%, although it remains in an important position.
+            - **QRIS** increased to 18.59%, indicating more active usage.
+            - **Non BI-Fast** transfers at 14.74%, while **BI-Fast** stabilized at 7.69%.
+            - Payment transactions **(Buy & Pay)** remain dominant, but **QRIS** shows a significant increase, which may be due to promotions or incentives to use digital payments.
             """,
             "2024-08-04": """
-            - **Buy & Pay** was consistently high with 41.33% (62 transactions).
-            - **E-Wallets** at 20.67% (31 transactions), remained popular.
-            - **QRIS** reached 20.00% (30 transactions), making it a day with significant QRIS contribution.
-            - Non BI-Fast transfers decreased to 10.67% (16 transactions), while BI-Fast was at 7.33% (11 transactions).
-            - Digital payments (Buy & Pay and QRIS) continued to increase, signaling wider adoption of cashless payments. Transfer transactions slightly reduced, while focus shifted to payments and e-wallets.
+            - **Buy & Pay** was consistently high with 41.33%.
+            - **E-Wallets** at 20.67%, remained popular.
+            - **QRIS** reached 20.00%, making it a day with significant QRIS contribution.
+            - **Non BI-Fast** transfers decreased to 10.67%, while **BI-Fast** was at 7.33%.
+            - Digital payments **(Buy & Pay and QRIS)** continued to increase, signaling wider adoption of cashless payments. Transfer transactions slightly reduced, while focus shifted to **payments** and **e-wallets**.
             """,
             "2024-08-05": """
-            - **Buy & Pay** at 40.25% (64 transactions), maintaining its position as the leading transaction.
-            - **E-Wallet** increased again to 21.38% (34 transactions).
-            - **QRIS** decreased slightly to 15.72% (25 transactions).
-            - Non BI-Fast transfers at 13.21% (21 transactions), and BI-Fast at 9.43% (15 transactions).
-            - Payments remain the top priority, but e-wallet transactions also showed a significant increase. QRIS slightly decreased compared to the previous day, but remains important.
+            - **Buy & Pay** at 40.25%, maintaining its position as the leading transaction.
+            - **E-Wallet** increased again to 21.38%.
+            - **QRIS** decreased slightly to 15.72%.
+            - **Non BI-Fast** transfers at 13.21%, and **BI-Fast** at 9.43%.
+            - **Payments** remain the top priority, but **e-wallet** transactions also showed a significant increase. **QRIS** slightly decreased compared to the previous day, but remains important.
             """,
             "2024-08-06": """
-            - **Buy & Pay** remained strong at 37.50% (57 transactions), slightly down from the previous day.
-            - **QRIS** reached its highest peak of the week with 21.71% (33 transactions), indicating peak QR usage on this day.
-            - **E-Wallets** dropped to 16.45% (25 transactions).
-            - Non BI-Fast transfers increased slightly to 15.79% (24 transactions), and BI-Fast at 8.55% (13 transactions).
-            - QRIS reached peak usage, while payments and transfers still play a big role in daily activities. There is a slight shift from e-wallets to QRIS.
+            - **Buy & Pay** remained strong at 37.50%, slightly down from the previous day.
+            - **QRIS** reached its highest peak of the week with 21.71%, indicating peak QR usage on this day.
+            - **E-Wallets** dropped to 16.45%.
+            - **Non BI-Fast** transfers increased slightly to 15.79% (24 transactions), and **BI-Fast** at 8.55%.
+            - **QRIS** reached peak usage, while **payments** and **transfers** still play a big role in daily activities. There is a slight shift from **e-wallets** to **QRIS**.
             """,
             "2024-08-07": """
-            - **Buy & Pay** at 38.06% (59 transactions), still dominates although slightly declining.
-            - **E-Wallets** saw a sharp rise to 25.16% (39 transactions), the highest this week.
-            - **QRIS** at 14.84% (23 transactions).
-            - Non BI-Fast transfers dropped to 12.90% (20 transactions), and BI-Fast at 9.03% (14 transactions).
-            - E-wallets saw a sharp rise, indicating that customers were more active in topping up at the end of the week. Meanwhile, Buy & Pay is still the main transaction type. QRIS declined slightly, but remains important.
+            - **Buy & Pay** at 38.06%, still dominates although slightly declining.
+            - **E-Wallets** saw a sharp rise to 25.16%, the highest this week.
+            - **QRIS** at 14.84%.
+            - **Non BI-Fast** transfers dropped to 12.90%, and **BI-Fast** at 9.03%.
+            - **E-wallets** saw a sharp rise, indicating that customers were more active in topping up at the end of the week. Meanwhile, **Buy & Pay** is still the main transaction type. **QRIS** declined slightly, but remains important.
             """
         }
 
@@ -308,32 +308,38 @@ with tab3:
     # Insights
     st.subheader("Insights in July 2024")
     insights = """
-    1. **Dominant Point Sources**:
-        - **Pay & Buy** transactions significantly dominated the point earning, contributing to a total of **211 transactions**. This indicates a strong customer engagement in using payment services for purchases, likely reflecting consumer preferences for convenience and rewards from everyday spending.
-        - **QRIS** and **E-Wallet** transactions both had **114 transactions**, showing a balanced interest in digital payment solutions.
+    1. **Total Points Earned**:
+        - 5,480,422 points were earned in total across all activities. This is a significant accumulation, highlighting active customer engagement with BJB services in July.
+    
+    2. **Dominant Point Sources**:
+        - The majority of the points came from **Pay & Buy** transactions, which had the highest number of transactions (37.7%), showing that customers frequently use this service, possibly for bill payments, shopping, or other utilities.
+        - **QRIS** and **E-Wallet** also contributed significantly with 20.4% transactions each, further emphasizing the increasing popularity of digital payment methods.
+        - **Transfer BI-Fast** was another important contributor, with 10.7% transactions generating a large amount of the total earned points.
+    
+    3. **Point Redemption Gap**:
+        - Out of the **5,480,422** points earned, only **950,254** points were redeemed, indicating that there is a substantial amount of points still available for redemption.
 
-    2. **Transfer Activities**:
-        - **Transfer BI-Fast** had **60 transactions** with a total of **5,480,422 points earned**, indicating that this method is valued by customers for quick and efficient fund transfers. However, it’s worth noting that the redeemed points from this source are notably lower than earned points.
-        - **Transfer Non BI-Fast** had **61 transactions**, but the data does not show any points earned or redeemed, suggesting a need for further promotion or incentives for this transfer method.
+    4. **Point Redemption Strategy**:
+        - While customers are actively earning points, there is a need to promote point redemption, especially for services like **Pay & Buy**, **QRIS**, and **E-Wallet**. These services could be linked with targeted promotions to drive point redemption.
     """
     st.write(insights)
 
     # Recommendations for Voucher Redemption
     st.write("Based on the data from the previous month, here are the recommended vouchers:")
     recommendations = """
-    1. **Focus on Everyday Spending**:
-        - **Voucher Ideas**: Offer vouchers for popular retail partners (e.g., grocery stores, online shopping platforms) where customers can easily redeem points. This can encourage further spending and loyalty to the bank.
+    1. **Popular Retail Vouchers**:
+        - Given that **Pay & Buy** is the most used service, consider offering retail or grocery vouchers for popular stores like Alfamart, Indomaret, or supermarkets. These vouchers would likely appeal to customers who frequently use this service for daily purchases.
 
-    2. **Incentives for Digital Payments**:
-        - **QRIS and E-Wallet Promotions**: Create vouchers or cashback offers specifically for QRIS and E-Wallet transactions. Highlight these in marketing materials to increase engagement with these payment methods.
+    2. **QRIS and E-Wallet Offers**:
+        - To encourage redemption from **QRIS** and **E-Wallet** users, introduce vouchers for digital wallets such as GoPay, OVO, or DANA. Providing small bonus points for redemptions could also incentivize more customers to redeem their points.
 
-    3. **Transfer Promotions**:
-        - Consider introducing promotions for **Transfer Non BI-Fast** to stimulate point earning and redemption. For example, offering bonus points for every transfer made could motivate customers to use this service more frequently.
+    3. **Travel and Leisure Vouchers**:
+        - Offer travel vouchers or discounts for entertainment, such as movie tickets or dining vouchers at popular restaurants. This could appeal to a broader audience, especially during the holiday season in August.
 
-    4. **Seasonal or Event-Based Vouchers**:
-        - Align vouchers with upcoming holidays or local events in August to encourage point redemption. This could include vouchers for entertainment, dining, or travel, appealing to customers looking to enjoy their points during special occasions.
+    4. **Exclusive BI-Fast Transfer Bonus**:
+        - Since **BI-Fast** transfers have seen high point accumulation but relatively low redemption, offer exclusive cashback or bonus points for customers who redeem their points through BI-Fast transfers. This can boost the use of this service for larger transfers or payments.
 
-    5. **Feedback and Surveys**:
-        - Engage customers through surveys to determine what types of vouchers they would be most interested in. Tailoring offerings based on customer feedback can enhance satisfaction and loyalty.
+    5. **Gamified Redemption**:
+        - Introduce a gamified redemption experience where customers can "unlock" higher-value vouchers based on the number of points they redeem in August. This could boost overall redemption and engagement with the loyalty program.
     """
     st.write(recommendations)
