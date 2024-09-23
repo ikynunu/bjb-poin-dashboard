@@ -101,45 +101,33 @@ with tab1:
     """
     st.write(insights)
 
-# Tab 2: Historical Monitoring
-# Tab 2: Historical Monitoring
+# Historical Monitoring
 with tab2:
     st.header("BJB Points Monitoring")
 
     # Kalender untuk pemilihan tanggal
     selected_date = st.date_input("Select Date", value=pd.to_datetime('2024-08-01'))
 
-    # Fungsi untuk memuat data berdasarkan tanggal yang dipilih
-    def load_data_by_date(selected_date):
-        # Pemetaan file CSV untuk tanggal 1-7 Agustus 2024
-        file_map = {
-            "2024-08-01": 'loyalty_points_log_1.csv',
-            "2024-08-02": 'loyalty_points_log_2.csv',
-            "2024-08-03": 'loyalty_points_log_3.csv',
-            "2024-08-04": 'loyalty_points_log_4.csv',
-            "2024-08-05": 'loyalty_points_log_5.csv',
-            "2024-08-06": 'loyalty_points_log_6.csv',
-            "2024-08-07": 'loyalty_points_log_7.csv'
-        }
-        
-        # Formatkan tanggal yang dipilih
-        selected_date_str = selected_date.strftime('%Y-%m-%d')
-        
-        # Cek apakah tanggal yang dipilih ada dalam rentang yang memiliki CSV
-        if selected_date_str in file_map:
-            # Jika ada, muat file CSV yang sesuai
-            file_path = file_map[selected_date_str]
-            return pd.read_csv(file_path)
-        else:
-            # Jika tidak ada data untuk tanggal yang dipilih
-            return None
+    # Pemetaan file CSV untuk tanggal 1-7 Agustus 2024
+    file_map = {
+        "2024-08-01": 'loyalty_points_log_1.csv',
+        "2024-08-02": 'loyalty_points_log_2.csv',
+        "2024-08-03": 'loyalty_points_log_3.csv',
+        "2024-08-04": 'loyalty_points_log_4.csv',
+        "2024-08-05": 'loyalty_points_log_5.csv',
+        "2024-08-06": 'loyalty_points_log_6.csv',
+        "2024-08-07": 'loyalty_points_log_7.csv'
+    }
 
-    # Memuat data berdasarkan tanggal yang dipilih
-    historical_data = load_data_by_date(selected_date)
+    # Load data based on selected date
+    selected_date_str = selected_date.strftime('%Y-%m-%d')
+    if selected_date_str in file_map:
+        historical_data = pd.read_csv(file_map[selected_date_str])
+    else:
+        historical_data = None
 
     # Pastikan data tersedia sebelum menampilkan
     if historical_data is not None:
-        # Tampilkan tanggal yang dipilih
         st.write(f"Selected date: {selected_date.strftime('%B %d, %Y')}")
 
         # Menghitung metrik yang sama seperti di Tab 1
@@ -149,31 +137,25 @@ with tab2:
         total_vouchers_redeemed = historical_data['Redeemed Vouchers'].iloc[0]
         total_vouchers_not_redeemed = historical_data['Currently Vouchers'].iloc[0]
 
-        # Top row: Total Points Earned and Total Points Redeemed (side by side)
+        # Display metrics
         col1, col2 = st.columns([1, 1])
         col1.metric("**Total Points Earned Today**", "{:,.0f}".format(total_points_earned))
         col2.metric("**Total Points Redeemed Today**", "{:,.0f}".format(total_points_redeemed))
+        col3 = st.columns([1, 2, 1])
+        col3[1].metric("**Total Admin Fees Collected Today**", "Rp {:,.0f}".format(total_admin_fees))
 
-        # Middle row: Total Admin Fees in the center
-        col3 = st.columns([1, 2, 1])  # Creates 3 columns, with the middle one being wider
-        col3[1].metric("**Total Admin Fees Collected Today**", "Rp {:,.0f}".format(total_admin_fees))  # Access the middle column (index 1)
-
-        # Display voucher images, names, and metrics for redeemed and not yet redeemed vouchers
-        st.header("Vouchers Overview")
-
-        # First voucher - displayed in the left column
+        # Voucher overview
         col4, col5 = st.columns(2)
         with col4:
-            st.image("1.png", use_column_width=True)  # Manually specify the image path for voucher 1
-            st.write("**Food & Beverages**")  # Manually specify the name for voucher 1
-            st.metric("Redeemed Vouchers", "{:,.0f}".format(total_vouchers_redeemed))  # Metrics for voucher 1
+            st.image("1.png", use_column_width=True)
+            st.write("**Food & Beverages**")
+            st.metric("Redeemed Vouchers", "{:,.0f}".format(total_vouchers_redeemed))
             st.metric("Vouchers Not Yet Redeemed", "{:,.0f}".format(total_vouchers_not_redeemed))
 
-        # Second voucher - displayed in the right column
         with col5:
-            st.image("2.png", use_column_width=True)  # Manually specify the image path for voucher 2
-            st.write("**Electricity**")  # Manually specify the name for voucher 2
-            st.metric("Redeemed Vouchers", "{:,.0f}".format(total_vouchers_redeemed))  # Metrics for voucher 2
+            st.image("2.png", use_column_width=True)
+            st.write("**Electricity**")
+            st.metric("Redeemed Vouchers", "{:,.0f}".format(total_vouchers_redeemed))
             st.metric("Vouchers Not Yet Redeemed", "{:,.0f}".format(total_vouchers_not_redeemed))
 
         # Third voucher - create a new row with 2 columns
@@ -191,9 +173,76 @@ with tab2:
             st.metric("Redeemed Vouchers", "{:,.0f}".format(total_vouchers_redeemed))  # Metrics for voucher 4
             st.metric("Vouchers Not Yet Redeemed", "{:,.0f}".format(total_vouchers_not_redeemed))
 
-        # Transaction Frequencies
-        st.header("Transaction Activity")
-        st.dataframe(historical_data[['Loyalty Point ID', 'CIF', 'Log ID', 'Tanggal Pemberian', 'Sumber Poin', 'Jumlah Poin']].head(5))
+        # Pie chart for historical data
+        if 'Klasifikasi' in historical_data.columns and 'Total' in historical_data.columns:
+            df_classification_hist = historical_data[['Klasifikasi', 'Total']].dropna()
+            fig_hist = px.pie(df_classification_hist, names='Klasifikasi', values='Total',
+                              title='Classification of Point Sources',
+                              labels={'Klasifikasi': 'Point Source', 'Total': 'Total Points'},
+                              hole=0.3)  # Optional donut chart
+            st.plotly_chart(fig_hist)
+        else:
+            st.warning("No classification data available for pie chart visualization.")
+
+        # Insight Harian berdasarkan tanggal yang dipilih
+        insights_map = {
+            "2024-08-01": """
+            - **Buy & Pay** dominates with 38.16% (58 transactions), showing that customers more often use payment services such as credit, bills, or shopping at the beginning of the month.
+            - **E-Wallet** came in second with 22.37% (34 transactions), showing the popularity of e-wallet top-up services such as GoPay, OVO, and DANA.
+            - **QRIS** accounted for 15.13% (23 transactions), indicating that QR digital payments are increasingly being used.
+            - Non BI-Fast transfers were slightly higher than BI-Fast, with 12.50% (19 transactions) and 11.84% (18 transactions) respectively.
+            - At the beginning of the month, most transactions came from payments (Buy & Pay) and e-wallets, while bank transfers still had an important role but did not dominate.
+            """,
+            "2024-08-02": """
+            - **Buy & Pay** increased to 40.49% (66 transactions), confirming that payments are still a priority for customers.
+            - **E-Wallets** also rose to 24.54% (40 transactions), showing that e-wallet top-ups continue to be used consistently.
+            - **QRIS** remained stable at 14.11% (23 transactions).
+            - Non BI-Fast transfers rose to 13.50% (22 transactions), more than BI-Fast which dropped to 7.36% (12 transactions).
+            - On the second day, e-wallet payments and top-ups dominated, with Buy & Pay becoming increasingly significant. BI-Fast transfers slightly decreased compared to the first day.
+            """,
+            "2024-08-03": """
+            - **Buy & Pay** remained high with 39.74% (62 transactions), despite a slight drop from the previous day.
+            - **E-Wallets** dropped to 19.23% (30 transactions), although it remains in an important position.
+            - **QRIS** increased to 18.59% (29 transactions), indicating more active usage.
+            - Non BI-Fast transfers at 14.74% (23 transactions), while BI-Fast stabilized at 7.69% (12 transactions).
+            - Payment transactions (Buy & Pay) remain dominant, but QRIS shows a significant increase, which may be due to promotions or incentives to use digital payments.
+            """,
+            "2024-08-04": """
+            - **Buy & Pay** was consistently high with 41.33% (62 transactions).
+            - **E-Wallets** at 20.67% (31 transactions), remained popular.
+            - **QRIS** reached 20.00% (30 transactions), making it a day with significant QRIS contribution.
+            - Non BI-Fast transfers decreased to 10.67% (16 transactions), while BI-Fast was at 7.33% (11 transactions).
+            - Digital payments (Buy & Pay and QRIS) continued to increase, signaling wider adoption of cashless payments. Transfer transactions slightly reduced, while focus shifted to payments and e-wallets.
+            """,
+            "2024-08-05": """
+            - **Buy & Pay** at 40.25% (64 transactions), maintaining its position as the leading transaction.
+            - **E-Wallet** increased again to 21.38% (34 transactions).
+            - **QRIS** decreased slightly to 15.72% (25 transactions).
+            - Non BI-Fast transfers at 13.21% (21 transactions), and BI-Fast at 9.43% (15 transactions).
+            - Payments remain the top priority, but e-wallet transactions also showed a significant increase. QRIS slightly decreased compared to the previous day, but remains important.
+            """,
+            "2024-08-06": """
+            - **Buy & Pay** remained strong at 37.50% (57 transactions), slightly down from the previous day.
+            - **QRIS** reached its highest peak of the week with 21.71% (33 transactions), indicating peak QR usage on this day.
+            - **E-Wallets** dropped to 16.45% (25 transactions).
+            - Non BI-Fast transfers increased slightly to 15.79% (24 transactions), and BI-Fast at 8.55% (13 transactions).
+            - QRIS reached peak usage, while payments and transfers still play a big role in daily activities. There is a slight shift from e-wallets to QRIS.
+            """,
+            "2024-08-07": """
+            - **Buy & Pay** at 38.06% (59 transactions), still dominates although slightly declining.
+            - **E-Wallets** saw a sharp rise to 25.16% (39 transactions), the highest this week.
+            - **QRIS** at 14.84% (23 transactions).
+            - Non BI-Fast transfers dropped to 12.90% (20 transactions), and BI-Fast at 9.03% (14 transactions).
+            - E-wallets saw a sharp rise, indicating that customers were more active in topping up at the end of the week. Meanwhile, Buy & Pay is still the main transaction type. QRIS declined slightly, but remains important.
+            """
+        }
+
+        # Tampilkan insight harian sesuai tanggal yang dipilih
+        if selected_date_str in insights_map:
+            st.header(f"Insights for {selected_date.strftime('%B %d, %Y')}")
+            st.write(insights_map[selected_date_str])
+        else:
+            st.warning("No data available for the selected date.")
     else:
         st.warning("No data available for the selected date.")
 
