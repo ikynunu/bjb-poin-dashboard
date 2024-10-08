@@ -375,7 +375,7 @@ def dashboard_page():
         <hr class="custom-divider">
         """, unsafe_allow_html=True)
 
-        st.dataframe(data[['Loyalty Point ID', 'CIF', 'Log ID', 'Tanggal Pemberian', 'Sumber Poin', 'Jumlah Poin']].head(5))
+        st.dataframe(data[['Loyalty Point ID', 'CIF', 'Log ID', 'Tanggal Pemberian', 'Sumber Poin', 'Keterangan', 'Jumlah Poin']].head(5))
 
         # Pie Chart for Point Classification
         st.markdown("""
